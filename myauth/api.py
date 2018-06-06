@@ -43,53 +43,14 @@ class LogInApi(JSONWebTokenAPIView):
     serializer_class = JSONWebTokenSerializer
 
 
-class LogOutApi(JSONWebTokenAPIView):
-    """
-    API View that checks the validity of a token, user in the token then deletes the corresponding session
-    object if the user is logged in.
-
-    Returns appropiate message for action.
-    """
+class LogOutApi(APIView):
     def post(self, request):
-        token = request.data['token'] 
-        msg = _("User is logged out")
-
-        #checking token's validity
-        try:
-            payload = jwt_decode_handler(token)
-        except jwt.ExpiredSignature:
-            msg = _('Signature has expired.')
-            
-        except jwt.DecodeError:
-            msg = _('Error decoding signature.')
-        
-        #checking username in both user model and session
-        try:
-            username = jwt_get_username_from_payload(payload)
-
-            if not username:
-                msg = _('Invalid payload.')
-                raise serializers.ValidationError(msg)
-
-            # Make sure user exists
-            try:
-                user = User.objects.get_by_natural_key(username)
-            except User.DoesNotExist:
-                msg = _("User doesn't exist.")
-            
-            if not user.is_active:
-                msg = _('User account is disabled.')
-
-            
-            if MySession.objects.filter(username = user.username).exists():
-                MySession.objects.filter(username = user.username).delete()
+        user = request.data['user']
+        if MySession.objects.filter(username = user).exists():
+                MySession.objects.filter(username = user).delete()
                 msg = _("User is logged out")
-            else:
-                msg = _("User is was not logged on")
-        except:
-            pass
-    
-
+        else:
+            msg = _("User is was not logged on")
+        
         return Response(msg)
-
     

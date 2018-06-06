@@ -64,11 +64,11 @@ class AuthTests(TestCase):
 
     def test_logout(self):
         data={
-            'token': self.token
+            'user': self.user.username
         }
-        response = self.client.post('/api/v1/myauth/logout/', json.dumps(data), content_type="application/json")
+        response = self.client.post('/api/v1/myauth/logout/', json.dumps(data), content_type="application/json", HTTP_AUTHORIZATION='JWT {}'.format(self.token))
         decoded = response.content.decode()
-        print(decoded)
+        
         self.assertEqual(decoded, '"User is logged out"')
 
 
