@@ -43,6 +43,7 @@ curl -X POST \
 
 ## 3. Logout:
 Description: Loggin Out a user from system
+
 | URL        | URI/api/v1/myauth/logout/|
 | ------------- |---------------| 
 | Method      | POST |
@@ -59,3 +60,17 @@ curl -X POST \
   -d '{
     "user":"ruhshan"
 }'
+
+
+## Running the project:
+git clone https://github.com/Ruhshan/restful-authentication.git
+
+sudo docker-compose up
+
+## Running the tests:
+
+sudo docker-compose run web python manage.py test
+
+### Location of tests: myauth/tests.py
+
+
