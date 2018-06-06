@@ -19,6 +19,9 @@ from rest_framework_jwt.settings import api_settings
 from .models import MySession
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Serializer class to create/register new user
+    """
     class Meta:
         model = User
         fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name')
@@ -41,8 +44,6 @@ class UserSerializer(serializers.ModelSerializer):
 class JSONWebTokenSerializer(Serializer):
     """
     Serializer class used to validate a username and password.
-
-    'username' is identified by the custom UserModel.USERNAME_FIELD.
 
     Returns a JSON Web Token that can be used to authenticate later calls.
     """

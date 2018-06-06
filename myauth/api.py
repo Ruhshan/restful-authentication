@@ -21,7 +21,12 @@ from .models import MySession
 
 #from rest_framework_jwt.serializers import JSONWebTokenSerializer
 
-class CreateUserView(CreateAPIView):
+class CreateUserApi(CreateAPIView):
+    """
+    API View that receives a POST with a username, password, email, first_name, last_name.
+
+    Returns a JSON Web Token with given values along with id and password hash
+    """
     model = User
     permission_classes = [
         permissions.AllowAny
@@ -29,7 +34,7 @@ class CreateUserView(CreateAPIView):
     serializer_class = UserSerializer
 
 
-class ObtainJSONWebToken(JSONWebTokenAPIView):
+class LogInApi(JSONWebTokenAPIView):
     """
     API View that receives a POST with a user's username and password.
 
