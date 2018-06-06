@@ -8,6 +8,13 @@ class AuthTests(TestCase):
         self.user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         self.user.save()
 
+        data = {
+            "username":"john",
+            "password":"johnpassword"
+        }
+        response = self.client.post('/api/v1/myauth/login/', json.dumps(data), content_type="application/json")
+        self.token = json.loads(response.content.decode())['token']
+
     def tearDown(self):
         self.user.delete()
 
@@ -54,6 +61,16 @@ class AuthTests(TestCase):
         response = self.client.post('/api/v1/myauth/login/', json.dumps(data), content_type="application/json")
         decoded = json.loads(response.content.decode())
         self.assertNotIn('token', decoded.keys())
+
+    def test_logout(self):
+        data={
+            'token': self.token
+        }
+        response = self.client.post('/api/v1/myauth/logout/', json.dumps(data), content_type="application/json")
+        decoded = response.content.decode()
+        print(decoded)
+        self.assertEqual(decoded, '"User is logged out"')
+
 
 # Create your tests here.
 
