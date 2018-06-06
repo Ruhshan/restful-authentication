@@ -1,5 +1,4 @@
 from django.conf.urls import url
-from rest_framework_jwt.views import obtain_jwt_token
 from .api import CreateUserApi, LogInApi, LogOutApi
 
 urlpatterns = [

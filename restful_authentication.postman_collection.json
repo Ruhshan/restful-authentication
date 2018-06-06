@@ -15,34 +15,38 @@
 	"requests": [
 		{
 			"id": "081ed7f5-e607-9576-dea2-f500cebf51ef",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJ1aHNoYW4iLCJleHAiOjE1MjgyOTgxMjUsImVtYWlsIjoiIn0.r59bbahl0UppE0ThW9QO-wo98qfI5w7B1Bq5qhakv7Q\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
 					"description": "",
 					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJ1aHNoYW4iLCJleHAiOjE1MjgyOTgxMjUsImVtYWlsIjoiIn0.r59bbahl0UppE0ThW9QO-wo98qfI5w7B1Bq5qhakv7Q",
+					"description": "",
+					"enabled": true
 				}
 			],
 			"url": "http://localhost:8000/api/v1/myauth/logout/",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "POST",
-			"collectionId": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
 			"data": [],
 			"dataMode": "raw",
-			"name": "Logout",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1528278899827,
-			"version": 2,
-			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"rawModeData": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJ1aHNoYW4iLCJleHAiOjE1MjgyNzkxNDgsImVtYWlsIjoiIn0.Xu-Qc3wqmg2ERfr4cvmM7UXDIUo-pvUjyGwiEaXzjc8\"\n}"
+			"time": 1528297980413,
+			"name": "Logout",
+			"description": "",
+			"collectionId": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
+			"responses": [],
+			"rawModeData": "{\n    user:\"ruhshan\"\n}"
 		},
 		{
 			"id": "2c7293af-d83d-673b-a47a-0e9f706159c7",
