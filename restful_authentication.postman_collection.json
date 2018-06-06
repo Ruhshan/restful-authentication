@@ -1,0 +1,108 @@
+{
+	"id": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
+	"name": "restful_authentication",
+	"description": "",
+	"order": [
+		"2c7293af-d83d-673b-a47a-0e9f706159c7",
+		"081ed7f5-e607-9576-dea2-f500cebf51ef",
+		"9e0c87bc-2a37-c414-ff97-95c4c02863f9"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1528270857785,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "081ed7f5-e607-9576-dea2-f500cebf51ef",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8000/api/v1/myauth/logout/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Logout",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1528278899827,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJ1aHNoYW4iLCJleHAiOjE1MjgyNzkxNDgsImVtYWlsIjoiIn0.Xu-Qc3wqmg2ERfr4cvmM7UXDIUo-pvUjyGwiEaXzjc8\"\n}"
+		},
+		{
+			"id": "2c7293af-d83d-673b-a47a-0e9f706159c7",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8000/api/v1/myauth/login/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1528271775012,
+			"name": "Login",
+			"description": "",
+			"collectionId": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
+			"responses": [],
+			"rawModeData": "{\n\t\"username\":\"ruhshana\",\n\t\"password\":\"test1234\"\n}"
+		},
+		{
+			"id": "9e0c87bc-2a37-c414-ff97-95c4c02863f9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8000/api/v1/myauth/register/",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "64e01bbb-c18e-2b0e-0e07-2ab8c429d742",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Register",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1528278964399,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n        \"username\": \"abir\",\n        \"password\": \"adfa\",\n        \"email\": \"abir@a.com\",\n        \"first_name\": \"Abir\",\n        \"last_name\": \"Ahmed\"\n    }"
+		}
+	]
+}
