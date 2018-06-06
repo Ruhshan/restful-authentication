@@ -5,10 +5,11 @@ from django.contrib.auth.models import User
 
 class AuthTests(TestCase):
     def setUp(self):
-        pass
+        self.user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        self.user.save()
 
     def tearDown(self):
-        pass
+        self.user.delete()
 
     def test_registerUserPass(self):
         data = {
@@ -35,6 +36,24 @@ class AuthTests(TestCase):
         decoded = json.loads(response.content.decode())
 
         self.assertEqual(decoded['password'], ['This field may not be blank.'])
+
+    def test_userloginValid(self):
+        data = {
+            "username":"john",
+            "password":"johnpassword"
+        }
+        response = self.client.post('/api/v1/myauth/login/', json.dumps(data), content_type="application/json")
+        decoded = json.loads(response.content.decode())
+        self.assertIn('token', decoded.keys())
+
+    def test_userloginInValid(self):
+        data = {
+            "username":"john",
+            "password":"johnpasswordnone"
+        }
+        response = self.client.post('/api/v1/myauth/login/', json.dumps(data), content_type="application/json")
+        decoded = json.loads(response.content.decode())
+        self.assertNotIn('token', decoded.keys())
 
 # Create your tests here.
 
