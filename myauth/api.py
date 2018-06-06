@@ -45,14 +45,16 @@ class LogInApi(JSONWebTokenAPIView):
 
 class LogOutApi(JSONWebTokenAPIView):
     """
-    API View that checks the veracity of a token, returning the token if it
-    is valid.
+    API View that checks the validity of a token, user in the token then deletes the corresponding session
+    object if the user is logged in.
+
+    Returns appropiate message for action.
     """
     def post(self, request):
         token = request.data['token'] 
         msg = _("User is logged out")
 
-        #checking token
+        #checking token's validity
         try:
             payload = jwt_decode_handler(token)
         except jwt.ExpiredSignature:
@@ -61,7 +63,7 @@ class LogOutApi(JSONWebTokenAPIView):
         except jwt.DecodeError:
             msg = _('Error decoding signature.')
         
-        #checking username
+        #checking username in both user model and session
         try:
             username = jwt_get_username_from_payload(payload)
 

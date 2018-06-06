@@ -43,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class JSONWebTokenSerializer(Serializer):
     """
-    Serializer class used to validate a username and password.
+    Serializer class used to validate a username and password then creates an object in MySession model.
 
     Returns a JSON Web Token that can be used to authenticate later calls.
     """
@@ -75,7 +75,7 @@ class JSONWebTokenSerializer(Serializer):
                     raise serializers.ValidationError(msg)
 
                 payload = jwt_payload_handler(user)
-                
+                #Creating a session object for the logged in user
                 MySession.objects.create(username = user.username)
 
                 return {
